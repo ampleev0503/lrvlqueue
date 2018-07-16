@@ -21,9 +21,13 @@ class QueueController extends Controller
     {
         $firstItem = DB::table('logs')->where('status', 0)->orderBy('created_at')->first();
 
-        DB::table('logs')
-            ->where('id', $firstItem->id)
-            ->update(['status' => 1]);
+        if($firstItem)
+        {
+            DB::table('logs')
+                ->where('id', $firstItem->id)
+                ->update(['status' => 1]);
+        }
+
 
         return view('update', ['firstItem' => $firstItem]);
     }
