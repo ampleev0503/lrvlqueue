@@ -19,7 +19,7 @@ class QueueController extends Controller
 
     public function update()
     {
-        $firstItem = DB::table('logs')->where('status', 0)->first();
+        $firstItem = DB::table('logs')->where('status', 0)->orderBy('created_at')->first();
 
         DB::table('logs')
             ->where('id', $firstItem->id)

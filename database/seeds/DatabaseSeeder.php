@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(TasksSeeder::class);
+        // закомментировал, так как сиды запускаю в миграции (чтобы не было дубликатов)
+         //$this->call(TasksSeeder::class);
     }
 }
