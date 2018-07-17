@@ -1,9 +1,12 @@
-<a href="/">На главную</a>
+@extends('master')
 
-<hr>
 
-@if($firstItem)
-    {{$firstItem->id}}
-@else
-    <p>Задач нет в очереди</p>
-@endif
+@section('content')
+
+    @if($firstItem)
+        {{$firstItem->id}}
+    @else
+        <p>Задач нет в очереди</p>
+    @endif
+
+@endsection

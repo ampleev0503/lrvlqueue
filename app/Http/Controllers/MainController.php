@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class MainController extends Controller
 {
     public function index()
     {
+        $tasks=Task::get();
 
-        $tasks=DB::table('tasks')->get();
-
-
-//        foreach ($tasks as $task) {
-//            echo $task->name;
-//
-//        dump($tasks);
         return view('main', ['tasks' => $tasks]);
     }
 }

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Log;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class QueueController extends Controller
 {
     public function index()
     {
-        $logs = DB::table('logs')
-            ->where('status', 0)
+        $logs = Log::queued()
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -19,16 +18,20 @@ class QueueController extends Controller
 
     public function update()
     {
-        $firstItem = DB::table('logs')->where('status', 0)->orderBy('created_at')->first();
+        $firstItem = Log::queued()->orderBy('created_at')->first();
 
         if($firstItem)
         {
-            DB::table('logs')
-                ->where('id', $firstItem->id)
-                ->update(['status' => 1]);
+            Log::find($firstItem->id)->update(['status' => 1]);
         }
 
-
         return view('update', ['firstItem' => $firstItem]);
+    }
+
+
+    public function done()
+    {
+        $logsDone = Log::done()->get();
+        return view('done', ['logs' => $logsDone]);
     }
 }

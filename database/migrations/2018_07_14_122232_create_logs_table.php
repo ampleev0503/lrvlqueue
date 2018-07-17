@@ -17,7 +17,7 @@ class CreateLogsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('task_id');
             $table->unsignedInteger('status')->default(0);
-            $table->dateTime('created_at');
+            $table->timestamps();
         });
     }
 

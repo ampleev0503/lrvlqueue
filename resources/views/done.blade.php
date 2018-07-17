@@ -7,8 +7,7 @@
     <table>
         @foreach($logs as $log)
             <tr>
-                <td>{{$log->id}}|</td>
-                <td>{{$log->created_at}}</td>
+                <td>{{$log->id}}</td>
             </tr>
         @endforeach
     </table>
