@@ -22,7 +22,7 @@ class QueueController extends Controller
 
         if($firstItem)
         {
-            Log::find($firstItem->id)->update(['status' => 1]);
+            $firstItem->update(['status' => 1]);
         }
 
         return view('update', ['firstItem' => $firstItem]);
