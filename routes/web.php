@@ -15,9 +15,9 @@
 //    return view('welcome');
 //});
 
-Route::get('/', 'MainController@index');
+Route::get('/', 'TaskController@index');
 
-Route::get('/task{id}', 'TaskController@index')->where('id', '[0-9]+');
+Route::get('/task{id}', 'TaskController@create')->where('id', '[0-9]+');
 
 Route::get('/queue', 'QueueController@index');
 

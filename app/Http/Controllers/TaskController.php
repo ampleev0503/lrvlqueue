@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        Task::find($id)->increment('counter');
+        $tasks=Task::get();
+
+        return view('main', ['tasks' => $tasks]);
+    }
+
+    public function create($id)
+    {
+        Task::findOrFail($id)->increment('counter');
         Log::create(['task_id' => $id]);
 
         return redirect('/');
